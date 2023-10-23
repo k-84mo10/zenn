@@ -91,7 +91,7 @@ polyluxをインポートしたら、次にスライドの基本設定（紙面�
 タイトルスライドにしたい場合は以下のようにするのが良いでしょう。
 ```
 #polylux-slide[
-    #set align(horizen + center)
+    #set align(horizon + center)
     = polyluxのススメ
 
     Lyle
@@ -106,7 +106,7 @@ polyluxをインポートしたら、次にスライドの基本設定（紙面�
 
 // タイトルスライド
 #polylux-slide[
-    #set align(horizen + center)
+    #set align(horizon + center)
     = polyluxのススメ
 
     Lyle
