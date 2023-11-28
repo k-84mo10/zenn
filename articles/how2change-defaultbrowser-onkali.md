@@ -18,4 +18,5 @@ $ xdg-settings set default-web-browser chromium.desktop
 なお、デフォルトブラウザを確認したい場合は以下のコマンドを実行する。
 ```shell
 $ xdg-settings get default-web-browser
+chromium.desktop
 ```
