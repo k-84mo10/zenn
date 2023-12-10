@@ -169,3 +169,36 @@ try:
 except (ValueError, KeyError):
     print("Incorrect decryption")
 ```
+
+### AES
+AESはNISTによって標準化された対象ブロック暗号で、データブロックは16バイトです。
+鍵長は16バイト、24バイト、32バイトのいずれかです。
+AESで暗号化する際、暗号利用モードを指定できます。
+指定できるモードは以下の通りです。
+| モード | 説明 |
+| ---- | ---- |
+| AES.MODE_ECB | Electronic Code Book | 
+| AES.MODE_CBC | Cipher Block Chaining |
+| AES.MODE_CFB | Cipher FeedBack |
+| AES.MODE_OFB | Output FeedBack |
+| AES.MODE_CTR | Counter mode|
+| AES.MODE_OPENPGP | OpenPGP mode |
+| AES.MODE_CCM | Counter with CBC-MAC |
+| AES.MODE_EAX | EAX mode |
+| AES.MODE_SIV | Synthetic Initialization Vector mode |
+| AES.MODE_GCM | Galois Counter mode |
+| AES.MODE_OCB | Offset Code Book mode |
+
+実装方法は以下の通りです。
+```python
+# Crypto CipherからAESをインポート
+from Crypto.Cipher import AES
+
+# 秘密鍵を用意
+key = b'Sixteen byte key' # 16バイトの秘密鍵
+
+# 暗号化するためのオブジェクトを作成
+# 今回の暗号利用モードはEAX modeを使用
+cipher = AES.new(key, AES.MODE_EAX)
+
+```
