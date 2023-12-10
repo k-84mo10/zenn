@@ -191,7 +191,6 @@ AESで暗号化する際、暗号利用モードを指定できます。
 
 実装方法は以下の通りです。
 ```python
-# Crypto CipherからAESをインポート
 from Crypto.Cipher import AES
 
 # 秘密鍵を用意
@@ -201,4 +200,27 @@ key = b'Sixteen byte key' # 16バイトの秘密鍵
 # 今回の暗号利用モードはEAX modeを使用
 cipher = AES.new(key, AES.MODE_EAX)
 
+# nonceを生成
+nonce = cipher.nonce
+
+# 平文を用意
+plaintext = b'Attack at dawn'
+
+# 平文を暗号化
+ciphertext, tag = cipher.encrypt_and_digest(plaintext)
+
+# 暗号文とtagを表示
+print("Ciphertext:", ciphertext)
+print("Tag:", tag)
+
+# 新しい暗号オブジェクトを初期化して復号化
+decipher = AES.new(key, AES.MODE_EAX, nonce=nonce)
+
+# 平文を復号化
+decrypted_text = decipher.decrypt(ciphertext)
+
+# 復号化された平文を表示
+print("Decrypted Text:", decrypted_text.decode())
 ```
+ちなみに、EAXモードは暗号化と認証を組み合わせたモードです。
+MAC（Message Authentication Code）が使用されており、鍵とデータを組み合わせてタグを生成し、暗号文とタグを送信するのが特徴です。
